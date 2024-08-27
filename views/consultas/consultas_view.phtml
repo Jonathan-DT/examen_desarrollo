@@ -1,0 +1,76 @@
+<?php include('views/shared/header/header.phtml'); ?>
+<main>
+<?php
+    session_start(); // Asegúrate de iniciar la sesión al inicio del archivo
+
+    // Obtener el mensaje de la sesión
+    $message = isset($_SESSION['message']) ? $_SESSION['message'] : '';
+    $messageType = isset($_SESSION['message_type']) ? $_SESSION['message_type'] : '';
+
+    // Limpiar el mensaje de la sesión después de mostrarlo
+    unset($_SESSION['message']);
+    unset($_SESSION['message_type']);
+    ?>
+
+    <!-- Mostrar el popup si hay un mensaje -->
+    <?php if ($message): ?>
+        <div id="popupMessage" class="popup <?php echo htmlspecialchars($messageType); ?>">
+            <?php echo htmlspecialchars($message); ?>
+        </div>
+    <?php endif; ?>
+
+  <div class="container">
+    <form action="/consultas/store" method="post">
+      <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha de Consulta</label>
+        <input type="date" class="form-control" name="fecha" id="fecha" aria-describedby="fecha" require>
+        <div id="fecha" class="form-text">Introduce la fecha de consulta.</div>
+      </div>
+      <div class="mb-3">
+        <label for="medico" class="form-label">Medico</label>
+        <select id="medico" name="medico" class="form-select" aria-label="Selecciona un médico" require>
+          <?php
+          // Recorrer el arreglo de datos y generar las filas de la tabla
+          foreach ($data["medicos"] as $fila) {
+            echo '<option value=' . strval($fila['id_medico']) . ">" . $fila['nombre'] . "</option>";
+          }
+          ?>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="paciente" class="form-label">Paciente</label>
+        <select id="paciente" name="paciente" class="form-select" aria-label="Selecciona un paciente" require>
+          <?php
+          // Recorrer el arreglo de datos y generar las filas de la tabla
+          foreach ($data["pacientes"] as $fila) {
+            echo '<option value=' . strval($fila['id_paciente']) . ">" . $fila['nombre'] . "</option>";
+          }
+          ?>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="diagnostico" class="form-label">diagnostico</label>
+        <select id="diagnostico" name="diagnostico" class="form-select" aria-label="Selecciona un diagnostico" require>
+          <?php
+          // Recorrer el arreglo de datos y generar las filas de la tabla
+          foreach ($data["diagnosticos"] as $fila) {
+            echo '<option value=' . strval($fila['id']) . ">" . $fila['descripcion'] . "</option>";
+          }
+          ?>
+        </select>
+      </div>
+
+      <div class="form-floating">
+        <textarea require class="form-control" placeholder="descripcion del tratamiento" name="tratamiento"id="tratamiento" style="height: 100px"></textarea>
+        <label for="tratamiento">Descripcion del tratamiento</label>
+      </div>
+
+      <div class="mb-3">
+        <label for="costo" class="form-label">Costo</label>
+        <input step=".01" type="number" class="form-control" name="costo" id="costo" require>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</main>
+<?php include('views/shared/footer/footer.phtml'); ?>

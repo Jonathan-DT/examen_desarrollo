@@ -1,0 +1,19 @@
+<footer>
+        <p>&copy; 2024 Mi Aplicación. Todos los derechos reservados.</p>
+    </footer>
+    <!-- <script src="script.js"></script> -->
+    <script>
+    // Mostrar el popup si hay un mensaje
+    window.onload = function() {
+        var popup = document.getElementById('popupMessage');
+        if (popup) {
+            popup.style.display = 'block';
+            // Ocultar el popup después de 3 segundos
+            setTimeout(function() {
+                popup.style.display = 'none';
+            }, 3000);
+        }
+    };
+</script>
+</body>
+</html>

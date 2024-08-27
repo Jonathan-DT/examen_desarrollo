@@ -1,0 +1,48 @@
+/* Estilos para el footer */
+footer {
+    background-color: #333; /* Color de fondo oscuro */
+    color: #fff; /* Color del texto */
+    padding: 20px 0; /* Espaciado interno */
+    text-align: center; /* Alineación del texto al centro */
+}
+
+/* Contenido del footer */
+.footer-content {
+    max-width: 1200px; /* Ancho máximo del contenido */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    padding: 0 20px; /* Espaciado interno para los laterales */
+}
+
+/* Enlaces del footer */
+.footer-links {
+    margin-bottom: 15px; /* Espaciado inferior */
+}
+
+.footer-links a {
+    color: #fff; /* Color del texto de los enlaces */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    margin: 0 10px; /* Espaciado entre enlaces */
+    font-size: 14px; /* Tamaño de la fuente */
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+    text-decoration: underline; /* Subrayado en hover/focus */
+    color: #ccc; /* Color de texto en hover/focus */
+}
+
+/* Información del footer */
+.footer-info {
+    font-size: 12px; /* Tamaño de la fuente */
+}
+
+.footer-info a {
+    color: #fff; /* Color del texto de los enlaces */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+.footer-info a:hover,
+.footer-info a:focus {
+    text-decoration: underline; /* Subrayado en hover/focus */
+    color: #ccc; /* Color de texto en hover/focus */
+}

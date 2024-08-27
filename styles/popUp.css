@@ -1,0 +1,20 @@
+/* Estilos para el popup */
+.popup {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 20px; /* Espaciado desde la parte superior */
+    left: 50%; /* Posición horizontal centrada */
+    transform: translateX(-50%); /* Ajuste para centrar horizontalmente */
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    background-color: #333;
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.popup.success {
+    background-color: #28a745; /* Verde para mensajes de éxito */
+}
+.popup.error {
+    background-color: #dc3545; /* Rojo para mensajes de error */
+}

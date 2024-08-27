@@ -1,0 +1,48 @@
+/* Estilos para el header */
+header {
+    background-color: #333; /* Color de fondo oscuro */
+    padding: 10px 20px; /* Espaciado interno */
+    color: #fff; /* Color del texto */
+}
+
+/* Estilos para el nav */
+nav {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+}
+
+/* Estilos para el menú */
+nav ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+/* Estilos para los elementos de la lista */
+nav ul li {
+    margin: 0 15px; /* Espaciado entre elementos */
+}
+
+/* Estilos para los enlaces */
+nav ul li a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: #fff; /* Color del texto */
+    font-size: 16px; /* Tamaño de la fuente */
+    padding: 5px 10px; /* Espaciado interno para los enlaces */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave para el hover */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+/* Estilos para los enlaces en hover */
+nav ul li a:hover,
+nav ul li a:focus {
+    background-color: #555; /* Color de fondo en hover */
+    color: #fff; /* Color del texto en hover */
+}
+
+/* Estilos para el active state (si es necesario) */
+nav ul li a.active {
+    background-color: #007bff; /* Color de fondo activo */
+    color: #fff; /* Color del texto activo */
+}

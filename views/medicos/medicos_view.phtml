@@ -1,0 +1,63 @@
+<?php include('views/shared/header/header.phtml'); ?>
+
+<?php
+session_start(); // Asegúrate de iniciar la sesión al inicio del archivo
+
+// Obtener el mensaje de la sesión
+$message = isset($_SESSION['message']) ? $_SESSION['message'] : '';
+$messageType = isset($_SESSION['message_type']) ? $_SESSION['message_type'] : '';
+
+// Limpiar el mensaje de la sesión después de mostrarlo
+unset($_SESSION['message']);
+unset($_SESSION['message_type']);
+?>
+
+<!-- Mostrar el popup si hay un mensaje -->
+<?php if ($message): ?>
+    <div id="popupMessage" class="popup <?php echo htmlspecialchars($messageType); ?>">
+        <?php echo htmlspecialchars($message); ?>
+    </div>
+<?php endif; ?>
+<main>
+    <center><h2>Formulario Médicos</h2></center>
+    <div class="container">
+        <form id="medicoForm" action="/medicos/store" method="post">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre del Médico</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="nomdesc">
+                <div id="nomdesc" class="form-text">Escribir tu nombre</div>
+            </div>
+            <div class="mb-3">
+                <label for="cedula" class="form-label">Cédula</label>
+                <input  type="number" oninput="validarCurp()" class="form-control" id="cedula" name="cedula" require>
+                <div style="display: none;" class="error text-danger" id="errorCurpMessage">
+                    <label>solo son máximo 10 caracteres</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</main>
+<script>
+      function validarCurp() {
+            const curp = document.getElementById('cedula').value;
+            const msg = document.getElementById('errorCurpMessage');
+            const regex = /^\d{1,10}$/;
+            
+            if (!regex.test(curp)) {
+                msg.style.display = 'block';
+                return false;
+            } else {
+                msg.style.display = 'none';
+                return true;
+            }
+        }
+
+        document.getElementById('medicoForm').addEventListener('submit', function(event) {
+            if (!validarCurp()) {
+                event.preventDefault(); // Prevenir el envío del formulario si la CURP es inválida
+            }
+        });
+</script>
+<?php include('views/shared/footer/footer.phtml'); ?>
